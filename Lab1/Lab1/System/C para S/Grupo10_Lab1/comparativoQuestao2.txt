@@ -1,0 +1,44 @@
+Todos não possuem .text e nem .data
+
+sortMOD -O0: ja da pra montar direto, vem com .word
+
+sortMOD -O1: não da pra montar direto, vem sem .word e com label .LANCHOR0 faltando
+- compila após colocarmos a label com as .words de comparação
+
+sortMOD -O2: mesma coisa do sortMOD -O1
+
+sortMOD -O3: mesma coisa da sortMOD -O1 porém possui labels usadas várias vezes
+- (loop1) e (fim1)
+- no total são 3 labels de loop1 e fim1, mudando elas para
+loop1 / fim1
+loop2 / fim2
+loop3 / fim3
+
+atençao, as ordens de show, swap, etc estão todas trocadas
+	
+ele compila
+
+
+sortMOD -OS: mesma coisa do sortMOD -O1
+
+ 	!!! Tamanho !!!
+
+sortMOD -O0:	4000 bytes
+sortMOD -O1:	3000 bytes
+sortMOD -O2:	3000 bytes
+sortMOD -O3:	3000 bytes
+sort.s: 	3000 bytes
+sortMOD -OS:	3000 bytes
+
+
+
+
+
+	!!! Quant instruçoes !!!
+
+sort.s =        3740
+sortMOD -O0:	9787
+sortMOD -O1:	3891
+sortMOD -O2:	2180
+sortMOD -O3:	x
+sortMOD -OS: 	4098

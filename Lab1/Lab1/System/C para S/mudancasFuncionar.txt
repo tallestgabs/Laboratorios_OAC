@@ -1,0 +1,41 @@
+Site usado: Compiler Explorer
+	(https://godbolt.org)
+
+compilaçao feita em -O0
+
+	!!!Alterações !!!
+adicionar .data e .text
+
+Implementar o SHOW para printar 
+
+mudar o printf por SHOW
+mudar o putchar por SHOW
+
+colocar main no começo
+
+remover jr ra e adicionar a syscall de fechar o programa na main
+
+
+No sort.s o vetor foi salvo em a0, e o .eqv foi salvo em a1
+ja na conversão de C para RISC-V gcc 13.1.0 não é assim,
+o vetor foi dividido em duas partes, bits mais significativos (%hi) e bits
+menos significativos (%lo) e depois somados em um addi e salvo no a0,
+depois esse a0 foi gravado na memória no endereço -36(s0). então para
+pegar este valor fizemos um lw t0, -36(s0) para o t0 ter os inteiros assim
+como no sort.s
+tambem fizemos um .eqv N 30 (quantidade de numeros que serão printados por linha) e usamos li t1,N para 
+carregar o valor de N no t1, colocamos t2 como 0 e chamamos
+a função SHOW que substitui as instruções printf e putchar que vem no código
+compilado pelo Compiler explorer
+
+
+(programa faz o que pede porem repete 31 vezes)  RESOLVIDO!  :D
+
+ - para resolver este problema precisamos mudar a label que o show chama
+de .L2 para .L3, e remover as linhas de comparaçao e a chamada do SHOW na 
+label .L2
+
+
+	gmail do grupo:
+		laboacg10@gmail.com
+		senha: oactafoda
